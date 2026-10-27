@@ -13,12 +13,17 @@ App\Entity\Location:
         latitude:
             - NotBlank:
                   groups: [create, edit]
-                  message: 'Latitide can not be empty'
+                  message: 'Latitude can not be empty'
             - Range:
-                  min: -90
-                  max: 90
-                  groups: [create, edit]
+                  min: -100
+                  max: 100
+                  groups: [create]
                   notInRangeMessage: 'This value should be between {{ min }} and {{ max }}.'
+            -   Range:
+                    min: -90
+                    max: 90
+                    groups: [ edit ]
+                    notInRangeMessage: 'This value should be between {{ min }} and {{ max }}.'
 
         longitude:
             - NotBlank:
@@ -47,15 +52,21 @@ App\Entity\Measurement:
                   groups: [create, edit]
                   message: 'Choose temperature in celsius'
             - Range:
-                  min: -90
-                  max: 70
-                  groups: [create, edit]
+                  min: -200
+                  max: 150
+                  groups: [create]
                   notInRangeMessage: 'This value should be between {{ min }}°C and {{ max }}°C.'
+            -   Range:
+                    min: -90
+                    max: 70
+                    groups: [ edit ]
+                    notInRangeMessage: 'This value should be between {{ min }}°C and {{ max }}°C.'
+
 
         humidity:
             - NotBlank:
                   groups: [create, edit]
-                  message: 'This value is necesarry'
+                  message: 'This value is necessary'
             - Range:
                   min: 0
                   max: 100
@@ -65,17 +76,22 @@ App\Entity\Measurement:
         pressure:
             - NotBlank:
                   groups: [create, edit]
-                  message: 'This value is necesarry'
+                  message: 'This value is necessary'
             - Range:
-                  min: 800
-                  max: 1100
-                  groups: [create, edit]
+                  min: 500
+                  max: 1500
+                  groups: [create]
                   notInRangeMessage: 'This value should be between {{ min }} and {{ max }}hPa.'
+            -   Range:
+                    min: 800
+                    max: 1100
+                    groups: [ edit ]
+                    notInRangeMessage: 'This value should be between {{ min }} and {{ max }}hPa.'
 
         cloudiness:
             - NotBlank:
                   groups: [create, edit]
-                  message: 'This value is necesarry'
+                  message: 'This value is necessary'
             - Range:
                   min: 0
                   max: 100
