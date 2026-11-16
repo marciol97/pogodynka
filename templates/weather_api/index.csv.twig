@@ -1,0 +1,11 @@
+city,country,date,celsius,fahrenheit,humidity,pressure,cloudiness
+{% for measurement in measurements -%}
+{{- city }},
+{{- country }},
+{{- measurement.date|date('Y-m-d') }},
+{{- measurement.tempCelsius }},
+{{- measurement.fahrenheit }},
+{{- measurement.humidity }},
+{{- measurement.pressure }},
+{{- measurement.cloudiness }}
+{% endfor %}
